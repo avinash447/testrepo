@@ -13,3 +13,16 @@ tesetrepo
         name: nrpe
         state: restarted
       become: yes
+
+####################
+---
+
+- name: run yum update on RHEL servers
+  hosts: all
+  gather_facts: yes
+  strategy: free
+  vars:
+    patch: true
+    eengine: true
+    required_packages:
+      - jre-8u162-linux-x64.rpm
